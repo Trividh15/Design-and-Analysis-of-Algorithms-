@@ -1,0 +1,67 @@
+#include<stdio.h>
+
+void append(int a[], int b[], int temp[], int m, int n )
+{  
+  int i = 0, j = 0, k = 0;
+  while(i < m && j < n)
+  {
+    if(a[i] <= b[j])
+    {
+      temp[k] = a[i];
+      i++;
+      k++;
+    }
+    else
+    {
+      temp[k] = b[j];
+      j++;
+      k++;
+    }
+  } 
+  while(i < m)
+  {
+    temp[k] = a[i];
+    i++;
+    k++;
+  }
+  while(j < n)
+  {
+    temp[k] = b[j];
+    j++;
+    k++;
+  }
+} 
+
+int main()
+{
+  int m, n;
+  printf("Enter the value of m\n");
+  scanf("%d", &m);
+  printf("Enter the value of n\n");
+  scanf("%d", &n);
+
+  int A[m], B[n];
+
+  printf("Enter the value of the elements of first array:\n");
+  for(int i = 0; i < m; i++)
+  {
+    scanf("%d", &A[i]);
+  }
+
+  printf("Enter the values of the elements of the second array:\n");
+  for(int i = 0; i < n; i++)
+  {
+    scanf("%d", &B[i]);
+  }
+
+  int temp[m + n];  // Array to store the merged elements
+  append(A, B, temp, m, n);
+
+  printf("The merged array would be:\n");
+  for(int i = 0; i < m + n; i++)
+  {
+    printf("%d ", temp[i]);
+  }
+
+  return 0;
+}
